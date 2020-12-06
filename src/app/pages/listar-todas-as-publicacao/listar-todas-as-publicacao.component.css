@@ -1,0 +1,78 @@
+.container {
+  margin: 10px;
+}
+
+.item {
+  border-radius: .2em;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 2em;
+  padding: 1em 1em;
+  text-transform: uppercase;
+}
+
+.item-1 {
+  background-color: #e5ebef;
+}
+
+.item-2 {
+  background-color: #55b296;
+}
+
+.item-3 {
+  background-color: #9fd3c3;
+}
+
+.item-4 {
+  background-color: #e7b013;
+}
+
+.item-5 {
+  background-color: #073443;
+}
+
+
+.example-form {
+  min-width:100px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  min-width: 100px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.botaoPublicar {
+  float: right;
+}
+
+.example-card {
+  min-width: 200px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.alianharAoCentro {
+  display: flex;
+  justify-content: center;
+}
+
+.example-header-image {
+  background-image: url('/assets/avatar/default-avatar.png');
+  background-size: cover;
+}
+
+.espaco {
+  margin-bottom: 40px;
+  background: #f7f7f7
+}
+
+.botaoComentar {
+  float: right;
+   margin-right: 10%;
+}
+
+
+

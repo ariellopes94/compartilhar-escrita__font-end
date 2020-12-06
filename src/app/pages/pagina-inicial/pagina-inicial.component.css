@@ -1,0 +1,56 @@
+.container {
+  margin: 10px;
+}
+
+.item {
+  border-radius: .2em;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 2em;
+  padding: 4em 1em;
+  text-transform: uppercase;
+}
+
+.item-1 {
+  background-color: #e5ebef;
+}
+
+.item-2 {
+  background-color: #55b296;
+}
+
+.item-3 {
+  background-color: #9fd3c3;
+}
+
+.item-4 {
+  background-color: #e7b013;
+}
+
+.item-5 {
+  background-color: #073443;
+}
+
+
+.example-form {
+  min-width: 80%;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-card {
+  max-width: 400px;
+  background-color: #66c7d0;
+}
+
+
+
+
+.alianharAoCentro {
+  display: flex;
+  justify-content: center;
+}
