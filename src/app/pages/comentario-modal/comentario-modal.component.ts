@@ -13,7 +13,7 @@ export class ComentarioModalComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: ComentarioDialogoDto) { }
 
   ngOnInit(): void {
-   this.data = new ComentarioDialogoDto();
+    this.data = new ComentarioDialogoDto();
   }
 
 }

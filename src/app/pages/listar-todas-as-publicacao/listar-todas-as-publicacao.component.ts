@@ -32,35 +32,26 @@ export class ListarTodasAsPublicacaoComponent implements OnInit {
   page: Page;
 
 
- naoContemComentarios:boolean = false;
+  naoContemComentarios: boolean = false;
 
   ordenacoes = [
     { value: 'dataPublicacao', viewValue: 'Data' },
-    { value: 'upvote', viewValue: 'Curtidas' } ];
+    { value: 'upvote', viewValue: 'Curtidas' }];
 
-      //Test
   ordenacaoSelecionada = this.ordenacoes[0].value;
   pageComentario: Page;
-
- paginaAtual: number = 0;
- tamanhototalPagina: number = 5;
-  // MatPaginator Output
+  paginaAtual: number = 0;
+  tamanhototalPagina: number = 5;
   pageEvent: PageEvent = new PageEvent();
 
-  //Arraypagina
-
-
   constructor(private publicacaoService: PublicacaoService, private comentariosService: ComentariosService,
-              private dialog: MatDialog) { }
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
- //   this.buscarPublicacaos();
-      this.buscarPublicacaosPage(0, 5);
-
-      this.pageEvent.pageSize = 5;
-
-      this.paginaAtual = this.pageEvent.pageIndex;
-      this.tamanhototalPagina =  this.pageEvent.pageSize;
+    this.buscarPublicacaosPage(0, 5);
+    this.pageEvent.pageSize = 5;
+    this.paginaAtual = this.pageEvent.pageIndex;
+    this.tamanhototalPagina = this.pageEvent.pageSize;
   }
 
   onOrdenarSelection(): void {
@@ -68,13 +59,9 @@ export class ListarTodasAsPublicacaoComponent implements OnInit {
   }
 
   openDialog(publicacaoId): void {
-
-    const dialogRef = this.dialog.open(ComentarioModalComponent, { data: ComentarioDialogoDto});
+    const dialogRef = this.dialog.open(ComentarioModalComponent, { data: ComentarioDialogoDto });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result.usuario} ${result.comentario}`);
-
-      this.createComentario(publicacaoId, result.comentario , result.usuario );
-
+      this.createComentario(publicacaoId, result.comentario, result.usuario);
       this.buscarComentariosPage(publicacaoId);
     });
   }
@@ -95,30 +82,23 @@ export class ListarTodasAsPublicacaoComponent implements OnInit {
   buscarComentariosPage(idPublicacao): void {
     this.comentariosService.findAllComentariosPorPublicacao(idPublicacao, this.pageEvent.pageIndex)
       .subscribe(
-      (reponse) => {
-        this.pageComentario = reponse;
+        (reponse) => {
+          this.pageComentario = reponse;
+          this.comentarios = reponse.content;
+          this.naoContemComentarios = false;
 
-        this.comentarios = reponse.content;
-
-
-        this.naoContemComentarios = false;
-
-        if( !(this.comentarios[0]?.comentario.length > 0)) {
-
-
-          this.naoContemComentarios = true;
-
-         this.comentarios = [];
-
+          if (!(this.comentarios[0]?.comentario.length > 0)) {
+            this.naoContemComentarios = true;
+            this.comentarios = [];
+          }
+        },
+        (error) => {
+          console.log(error);
         }
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      );
   }
 
-  createComentario(publicacaoId: number, comentario: string, nomeUsuario: string): void{
+  createComentario(publicacaoId: number, comentario: string, nomeUsuario: string): void {
     this.comentarioDto.idPublicacao = publicacaoId;
     this.comentarioDto.comentario = comentario;
     this.comentarioDto.usuario.nome = nomeUsuario;
@@ -126,31 +106,20 @@ export class ListarTodasAsPublicacaoComponent implements OnInit {
     this.comentariosService.createComentario(this.comentarioDto)
       .subscribe(() => {
         this.comentarioDto = new ComentarioDto();
-
         this.buscarComentariosPage(publicacaoId);
-
       });
   }
 
-
-
-  paginacaoPublicacao(): void{
-
+  paginacaoPublicacao(): void {
     this.buscarPublicacaosPage(this.pageEvent.pageIndex, this.pageEvent.pageSize);
-
     this.paginaAtual = this.pageEvent.pageIndex;
-    this.tamanhototalPagina =  this.pageEvent.pageSize;
-   // window.scrollTo(0, 0);
-
+    this.tamanhototalPagina = this.pageEvent.pageSize;
   }
 
-  curtirComentario(idPublicacao: number, index: number): void{
-
+  curtirComentario(idPublicacao: number, index: number): void {
     this.publicacaoDtoCurtir.idPublicacao = idPublicacao;
-
     this.publicacaoService.curtirComentario(this.publicacaoDtoCurtir)
-      .subscribe((reponse)  => {
-
+      .subscribe((reponse) => {
         this.publicacaos[index].upvote = reponse.upvote;
       });
   }

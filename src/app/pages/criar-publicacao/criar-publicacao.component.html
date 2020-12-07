@@ -4,32 +4,25 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Usuario</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi"  [(ngModel)]="publicacao.usuario.nome" name="usuario">
+        <input matInput placeholder="Ex. Aonymous" value="Sushi" [(ngModel)]="publicacao.usuario.nome" name="usuario">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Titulo</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi"  [(ngModel)]="publicacao.titulo" name="titulo">
+        <input matInput placeholder="Ex. Porque o céu é azul ?" value="Sushi" [(ngModel)]="publicacao.titulo"
+          name="titulo">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Texto</mat-label>
-        <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="publicacao.texto" name="texto"></textarea>
+        <textarea matInput placeholder="o céu é azul porque..." [(ngModel)]="publicacao.texto" name="texto"></textarea>
       </mat-form-field>
 
       <section class="botaoPublicar">
-
         <div class="example-button-row">
-          <button mat-raised-button color="warn"  (click)="createPublicacao()">Publicar</button>
+          <button mat-raised-button color="warn" (click)="createPublicacao()">Publicar</button>
         </div>
       </section>
 
     </form>
-
-
   </div>
-
-
-
-
-

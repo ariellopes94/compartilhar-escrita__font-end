@@ -1,4 +1,4 @@
-export class Usuario{
+export class Usuario {
 
   id?: number;
   nome: string;

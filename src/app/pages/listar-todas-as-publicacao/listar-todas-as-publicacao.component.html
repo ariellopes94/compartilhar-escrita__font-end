@@ -1,23 +1,17 @@
 <div class="container">
 
-<div class="item item-1 alianharAoCentro">
-
-  <mat-form-field>
-    <mat-select placeholder="Ordenar" [(ngModel)]="ordenacaoSelecionada" (ngModelChange)="onOrdenarSelection()">
-      <mat-option *ngFor="let ordenar of ordenacoes" [value]="ordenar.value" >
-        {{ ordenar.viewValue }}
-      </mat-option>
-    </mat-select>
-    <!--<mat-hint>(ngModelChange) event</mat-hint>-->
-  </mat-form-field>
-
-</div>
-
-
+  <div class="item item-1 alianharAoCentro">
+    <mat-form-field>
+      <mat-select placeholder="Ordenar" [(ngModel)]="ordenacaoSelecionada" (ngModelChange)="onOrdenarSelection()">
+        <mat-option *ngFor="let ordenar of ordenacoes" [value]="ordenar.value">
+          {{ ordenar.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
 
   <div class="item item-1 alianharAoCentro" *ngFor="let publicacao of publicacaos; let index = index;">
-
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -32,28 +26,23 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="example-button-container ">
-          <button mat-mini-fab  color="warn" aria-label="Example icon button with a heart icon" (click)="curtirComentario(publicacao.id, index)">
+          <button mat-mini-fab color="warn" aria-label="Example icon button with a heart icon"
+            (click)="curtirComentario(publicacao.id, index)">
             <mat-icon>thumb_up</mat-icon>
           </button>
 
           <div class="botaoComentar">
-            <button mat-mini-fab  color="warn" aria-label="Example icon button with a heart icon" (click)="openDialog(publicacao.id)">
-              <mat-icon > chat_bubble_outlines </mat-icon>
+            <button mat-mini-fab color="warn" aria-label="Example icon button with a heart icon"
+              (click)="openDialog(publicacao.id)">
+              <mat-icon> chat_bubble_outlines </mat-icon>
             </button>
           </div>
-
         </div>
 
-
-
       </mat-card-actions>
-
-<!-- CORACAO   <mat-icon>favorite</mat-icon>-->
-
-      <mat-accordion class="example-card" (closed)="panelOpenState = false" >
-
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false" (click)="buscarComentariosPage(publicacao.id)">
+      <mat-accordion class="example-card" (closed)="panelOpenState = false">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+          (click)="buscarComentariosPage(publicacao.id)">
           <mat-expansion-panel-header>
             <mat-panel-title class="alianharAoCentro">
               Ver Comentario
@@ -61,29 +50,22 @@
           </mat-expansion-panel-header>
 
           <div *ngFor="let comentario of comentarios;" style="width: 100%; word-wrap: break-word;">
-
-
             <mat-card-subtitle style="margin-bottom: 0px;"> {{ comentario?.usuario?.nome }} </mat-card-subtitle>
             <mat-card class="espaco">
               <p>
-                 {{ comentario?.comentario }}
-               </p>
-             </mat-card>
-
+                {{ comentario?.comentario }}
+              </p>
+            </mat-card>
           </div>
 
           <div *ngIf="naoContemComentarios">
-           <h1> 0 Comentarios </h1>
-           <p>Seja o primeiro a comentar</p>
+            <h1> 0 Comentarios </h1>
+            <p>Seja o primeiro a comentar</p>
           </div>
 
-
-          <!--PAGINACAO-->
-          <mat-paginator [length]="this.pageComentario?.totalElements"
-            [pageSize]="2"
-            (page)="pageEvent = $event" (click)="buscarComentariosPage(publicacao.id)" >
-          <!--  [(ngModel)]="suaVariavel" (change)="seuMetodo($event)" -->
-        </mat-paginator >
+          <mat-paginator [length]="this.pageComentario?.totalElements" [pageSize]="2" (page)="pageEvent = $event"
+            (click)="buscarComentariosPage(publicacao.id)">
+          </mat-paginator>
 
         </mat-expansion-panel>
       </mat-accordion>
@@ -91,17 +73,6 @@
   </div>
 
 
-  <mat-paginator [length]="this.page?.totalElements"
-    [pageSize]="5"
-    (page)="pageEvent = $event" (click)="paginacaoPublicacao()" >
-  <!--  [(ngModel)]="suaVariavel" (change)="seuMetodo($event)" -->
-</mat-paginator >
-
-
-
-
-
-
-
-
-
+  <mat-paginator [length]="this.page?.totalElements" [pageSize]="5" (page)="pageEvent = $event"
+    (click)="paginacaoPublicacao()">
+  </mat-paginator>

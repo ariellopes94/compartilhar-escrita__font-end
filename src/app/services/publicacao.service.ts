@@ -20,18 +20,9 @@ export class PublicacaoService {
     );
   }
 
-  /*
-  findAllPublicacao(): Observable<any> {
-    return this.http.get<Publicacao[]>(`${API_CONFIG.baseUrl}/publicacao`);
-  }
-*/
-
-
   findAllPublicacaoPage(ordenar, page, size): Observable<Page> {
     return this.http.get<Page>(`${API_CONFIG.baseUrl}/publicacao?sort=${ordenar},desc&page=${page}&size=${size}`);
-                                     // publicacao?sort=${ordenar},desc&page=${page}&size=${size}
   }
-
 
   curtirComentario(idPublicacao: PublicacaoDtoCurtir): Observable<PublicacaoDtoCurtir> {
     return this.http.post<PublicacaoDtoCurtir>(

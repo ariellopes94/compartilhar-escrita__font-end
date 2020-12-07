@@ -1,6 +1,6 @@
 import { Usuario } from "./usuario";
 
-export class Publicacao{
+export class Publicacao {
 
   id?: number;
   titulo: string;

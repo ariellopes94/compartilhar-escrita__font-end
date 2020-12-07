@@ -12,17 +12,17 @@ export class CriarPublicacaoComponent implements OnInit {
 
   publicacao: Publicacao = new Publicacao();
 
-  constructor( private publicacaoService: PublicacaoService, private router: Router ) { }
+  constructor(private publicacaoService: PublicacaoService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  createPublicacao(): void{
+  createPublicacao(): void {
     this.publicacaoService.create(this.publicacao)
       .subscribe(() => {
         this.publicacao = new Publicacao();
         this.router.navigate(['/listarPublicacao']);
-      })
+      });
   }
 
 }
